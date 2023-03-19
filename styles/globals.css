@@ -1,8 +1,10 @@
 html{
   background-color: #444654;
 }
-pre {
-  background-color: #f6f8fa;
-  padding: 10px;
-  border-radius: 5px;
+
+.wrapper{
+  display: flex;
+}
+.wrapper > div:first-of-type{
+  flex: 0 1 300px;
 }

@@ -2,17 +2,11 @@ import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import sanitizeHtml from "sanitize-html";
+import CodeExample from '../components/CodeExample';
 const inter = Inter({ subsets: ['latin'] })
 const htmlString = `
 <div>Новый текст</div>
 `
-
-const copyToClipboard = ( text: string) =>{
-  navigator.clipboard.writeText(text)
-  .catch((error) => {
-    console.error("Error copying text to clipboard:", error);
-  });
-}
 
 export default function Home() {
   const sanitizedHtml = sanitizeHtml(htmlString);
@@ -27,12 +21,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />
-        <button onClick={(e)=>{copyToClipboard(htmlString)}}>Копировать в буфер обмена</button>
-        <code>
-          <pre>
-            <div dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />
-          </pre>
-        </code>
+        <CodeExample htmlCode={htmlString} />
       </main>
     </>
   )
